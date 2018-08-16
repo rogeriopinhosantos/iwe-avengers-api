@@ -27,10 +27,10 @@ And match response == {id: '#string', name: 'Captain America',	secretIdentity: '
 Scenario: Update a Avenger
 
 Given path 'avengers', 'sdsa-sasa-asas-sasa'
-And request {name: 'Iron Man',	secretIdentity: 'Tony Stark'}
+And request {name: 'Rogerio Pinho',	secretIdentity: 'Testes Testes'}
 When method put
 Then status 200
-And match response == {id: '#string', name: 'Iron Man',	secretIdentity: 'Tony Stark'}
+And match response == {id: '#string', name: 'Rogerio Pinho',	secretIdentity: 'Testes Testes'}
 
 Scenario: Update a Avenger Not Found
 
