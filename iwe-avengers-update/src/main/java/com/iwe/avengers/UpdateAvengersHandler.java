@@ -9,7 +9,7 @@ import com.iwe.avengers.dao.AvengerDAO;
 
 public class UpdateAvengersHandler implements RequestHandler<Avenger, HandlerResponse> {
 
-	private AvengerDAO dao = new AvengerDAO();
+	private AvengerDAO dao = AvengerDAO.getInstance();
 
 	@Override
 	public HandlerResponse handleRequest(final Avenger avenger, final Context context) {
@@ -21,7 +21,7 @@ public class UpdateAvengersHandler implements RequestHandler<Avenger, HandlerRes
 			throw new AvengerNotFoundException("[NotFound] - Avenger id: " + avenger.getId() + " not found");
 		}
 		
-		Avenger updatedAvenger = dao.update(avenger);
+		Avenger updatedAvenger = dao.save(avenger);
 		
 		final HandlerResponse response = HandlerResponse.builder()
 				.setStatusCode(200)

@@ -9,7 +9,7 @@ import com.iwe.avengers.dao.AvengerDAO;
 
 public class RemoveAvengerHandler implements RequestHandler<Avenger, HandlerResponse> {
 
-	private AvengerDAO dao = new AvengerDAO();
+	private AvengerDAO dao = AvengerDAO.getInstance();
 	
 	@Override
 	public HandlerResponse handleRequest(final Avenger avenger, final Context context) {
@@ -22,7 +22,7 @@ public class RemoveAvengerHandler implements RequestHandler<Avenger, HandlerResp
 			throw new AvengerNotFoundException("[NotFound] - Avenger id: " + avenger.getId() + " not found");
 		}
 		
-		dao.remove(avenger);
+		dao.delete(avenger);
 		
 		final HandlerResponse response = HandlerResponse.builder()
 				.setStatusCode(204)
